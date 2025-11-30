@@ -37,10 +37,10 @@
       <button class="btn" data-r="15" data-c="15" bindtap="setSize">15×15</button>
     </view>
     <view class="grid" style="grid-template-columns: repeat({{gridDimensions.cols}}, 1fr); grid-template-rows: repeat({{gridDimensions.rows}}, 1fr);">
-      <block wx:for="{{grid}}" wx:key="index">
-        <block wx:for="{{item}}" wx:key="index">
-          <view class="cell {{getCellClass(index,wx:forindex)}}" bindtap="onCellTap" data-r="{{wx:forindex}}" data-c="{{index}}">
-            <text class="cell-text">{{getCellText(wx:forindex,index)}}</text>
+      <block wx:for="{{renderGrid}}" wx:for-item="row" wx:for-index="rIdx" wx:key="r">
+        <block wx:for="{{row}}" wx:for-item="cell" wx:for-index="cIdx" wx:key="c">
+          <view class="cell {{cell.cls}}" bindtap="onCellTap" data-r="{{rIdx}}" data-c="{{cIdx}}">
+            <text class="cell-text">{{cell.text}}</text>
           </view>
         </block>
       </block>
@@ -55,7 +55,7 @@
   <view class="panel">
     <view class="panel-title">实时状态</view>
     <view class="row"><text>状态：{{stateText}}</text></view>
-    <view class="row"><text>进度：{{Math.round(executionProgress)}}%</text></view>
+    <view class="row"><text>进度：{{progressText}}</text></view>
     <block wx:if="{{currentStep}}">
       <view class="step">
         <text>步骤 {{currentStep.stepNumber}}</text>
