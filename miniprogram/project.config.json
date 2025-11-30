@@ -1,0 +1,15 @@
+{
+  "miniprogramRoot": "./",
+  "compileType": "miniprogram",
+  "appid": "REPLACE_WITH_YOUR_APPID",
+  "projectname": "IslandAccountMini",
+  "libVersion": "2.32.3",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": true
+  }
+}
