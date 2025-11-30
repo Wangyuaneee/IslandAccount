@@ -20,7 +20,7 @@ const Home: React.FC = () => {
             </div>
             <nav className="flex items-center gap-4">
               <Link
-                to="/algorithm"
+                to="/algorithms"
                 className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:text-blue-600 transition-colors"
               >
                 <BookOpen size={16} />
@@ -33,10 +33,14 @@ const Home: React.FC = () => {
                 <History size={16} />
                 历史记录
               </Link>
-              <div className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600">
+              <button
+                type="button"
+                onClick={() => document.getElementById('usage')?.scrollIntoView({ behavior: 'smooth' })}
+                className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:text-blue-600 transition-colors"
+              >
                 <Info size={16} />
                 <span>使用说明</span>
-              </div>
+              </button>
             </nav>
           </div>
         </div>
@@ -54,7 +58,7 @@ const Home: React.FC = () => {
         </div>
 
         {/* 使用说明 */}
-        <div className="mb-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
+        <div id="usage" className="mb-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
           <h3 className="text-sm font-medium text-blue-800 mb-2">使用说明</h3>
           <ul className="text-sm text-blue-700 space-y-1">
             <li>• 点击网格单元来创建陆地（绿色）或海洋（蓝色）</li>
