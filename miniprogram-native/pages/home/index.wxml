@@ -15,14 +15,15 @@
   </view>
   <view class="panel">
     <view class="panel-title">算法控制面板</view>
-    <view class="row">
+    <view class="row control-group">
+      <text class="group-label">算法类型</text>
       <button class="btn btn-sm {{algorithmType==='bfs'?'primary':''}}" bindtap="setBfs" disabled="{{algorithmState==='running'}}">BFS</button>
       <button class="btn btn-sm {{algorithmType==='dfs'?'primary':''}}" bindtap="setDfs" disabled="{{algorithmState==='running'}}">DFS</button>
     </view>
-    <view class="row">
-      <button class="btn btn-sm {{speed==='slow'?'selected':''}}" bindtap="setSlow" disabled="{{algorithmState==='running'}}">慢速</button>
-      <button class="btn btn-sm {{speed==='medium'?'selected':''}}" bindtap="setMedium" disabled="{{algorithmState==='running'}}">中速</button>
-      <button class="btn btn-sm {{speed==='fast'?'selected':''}}" bindtap="setFast" disabled="{{algorithmState==='running'}}">快速</button>
+    <view class="row control-group">
+      <text class="group-label">执行速度</text>
+      <slider min="1" max="3" step="1" value="{{speedValue}}" bindchange="onSpeedChange" show-value="true" />
+      <text class="chip">{{speedLabel}}</text>
     </view>
     <view class="row">
       <button class="btn primary" bindtap="start" disabled="{{algorithmState==='running'||algorithmState==='completed'}}">开始算法</button>
@@ -36,6 +37,7 @@
       <view>当前岛屿数量：{{islandCount}}</view>
       <button class="btn danger" bindtap="clearGrid" disabled="{{algorithmState==='running'}}">清空网格</button>
     </view>
+    <view class="row control-group"><text class="group-label">网格大小</text></view>
     <view class="sizes">
       <button class="btn btn-sm {{gridDimensions.rows===5?'primary':''}}" data-r="5" data-c="5" bindtap="setSize">5×5</button>
       <button class="btn btn-sm {{gridDimensions.rows===8?'primary':''}}" data-r="8" data-c="8" bindtap="setSize">8×8</button>
@@ -65,11 +67,12 @@
     <view class="row"><text>进度：{{progressText}}</text></view>
     <view class="metrics">
       <view class="metric"><text class="label">算法</text><text class="value">{{algorithmType==='bfs'?'BFS':'DFS'}}</text></view>
-      <view class="metric"><text class="label">速度</text><text class="value">{{speed==='slow'?'慢速':(speed==='medium'?'中速':'快速')}}</text></view>
+      <view class="metric"><text class="label">速度</text><text class="value">{{speedLabel}}</text></view>
       <view class="metric"><text class="label">网格</text><text class="value">{{gridDimensions.rows}}×{{gridDimensions.cols}}</text></view>
       <view class="metric"><text class="label">已访问</text><text class="value">{{visitedCount}}</text></view>
       <view class="metric"><text class="label">步骤数</text><text class="value">{{steps}}</text></view>
       <view class="metric"><text class="label">耗时</text><text class="value">{{formattedTime}}</text></view>
+      <view class="metric"><text class="label">结构大小</text><text class="value">{{structureSize}}</text></view>
     </view>
     <view class="progress">
       <view class="progress-bar" style="width: {{progressWidth}}"></view>
