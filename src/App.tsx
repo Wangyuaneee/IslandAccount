@@ -5,7 +5,7 @@ import History from "@/pages/History";
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/IslandAccount">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/algorithms" element={<AlgorithmDetails />} />
