@@ -1,15 +1,38 @@
 {
   "miniprogramRoot": "./",
   "compileType": "miniprogram",
-  "appid": "REPLACE_WITH_YOUR_APPID",
+  "appid": "wxacf6c8fecaf9e6a6",
   "projectname": "IslandAccountMini",
   "libVersion": "2.32.3",
   "packOptions": {
-    "ignore": []
+    "ignore": [],
+    "include": []
   },
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
-    "enhance": true
-  }
+    "enhance": true,
+    "postcss": false,
+    "compileWorklet": false,
+    "minified": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "simulatorPluginLibVersion": {},
+  "editorSetting": {}
 }
