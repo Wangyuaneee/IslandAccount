@@ -69,7 +69,7 @@
       <view class="metric"><text class="label">网格</text><text class="value">{{gridDimensions.rows}}×{{gridDimensions.cols}}</text></view>
       <view class="metric"><text class="label">已访问</text><text class="value">{{visitedCount}}</text></view>
       <view class="metric"><text class="label">步骤数</text><text class="value">{{steps}}</text></view>
-      <view class="metric"><text class="label">耗时</text><text class="value">{{(totalTime/1000).toFixed(2)}}s</text></view>
+      <view class="metric"><text class="label">耗时</text><text class="value">{{formattedTime}}</text></view>
     </view>
     <view class="progress">
       <view class="progress-bar" style="width: {{progressWidth}}"></view>

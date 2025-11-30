@@ -19,7 +19,8 @@ Page({
     steps:0,
     totalTime:0,
     structureSize:0,
-    startTime:0
+    startTime:0,
+    formattedTime:'0.00s'
   },
   onLoad(){this.setData({visited:this.createVisited(this.data.gridDimensions.rows,this.data.gridDimensions.cols)});this.updateComputed()},
   createVisited(r,c){const v=[];for(let i=0;i<r;i++){const row=[];for(let j=0;j<c;j++){row.push(false)}v.push(row)}return v},
@@ -42,7 +43,8 @@ Page({
     const stateText = algorithmState==='idle'?'待机中':algorithmState==='running'?'运行中':algorithmState==='paused'?'已暂停':'已完成'
     const progressText = `${Math.round(executionProgress)}%`
     const progressWidth = progressText
-    this.setData({ renderGrid: render, stateText, progressText, progressWidth })
+    const formattedTime = ((this.data.totalTime||0)/1000).toFixed(2)+'s'
+    this.setData({ renderGrid: render, stateText, progressText, progressWidth, formattedTime })
   },
   setBfs(){this.setData({algorithmType:'bfs'});wx.showToast({title:'已切换为 BFS',icon:'none'})},
   setDfs(){this.setData({algorithmType:'dfs'});wx.showToast({title:'已切换为 DFS',icon:'none'})},
