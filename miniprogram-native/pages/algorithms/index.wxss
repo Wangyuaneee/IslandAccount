@@ -1,0 +1,7 @@
+.container{padding:12px}
+.back{color:#2563eb;margin-bottom:12px}
+.section{background:#fff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:12px;padding:12px}
+.title{font-size:18px;font-weight:700;color:#111827;margin-bottom:8px}
+.subtitle{font-size:16px;font-weight:700;color:#374151;margin-bottom:6px}
+.text{font-size:14px;color:#4b5563}
+.list{text-align:left;display:flex;flex-direction:column;gap:4px;font-size:14px;color:#334155}

@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/algorithms/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "岛屿计数器",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f7fafc"
+  },
+  "sitemapLocation": "sitemap.json"
+}

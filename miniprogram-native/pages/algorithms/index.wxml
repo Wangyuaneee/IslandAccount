@@ -1,0 +1,30 @@
+<view class="container">
+  <navigator url="/pages/home/index" class="back">返回主页</navigator>
+  <view class="section">
+    <view class="title">BFS (广度优先搜索)</view>
+    <view class="text">广度优先搜索从根开始逐层访问节点，在岛屿问题中会从一个陆地开始，先访问所有相邻陆地，再扩展到下一层，直到整座岛屿访问完成。</view>
+  </view>
+  <view class="section">
+    <view class="subtitle">算法步骤</view>
+    <view class="list">
+      <text>1. 遍历网格，找到未访问的陆地</text>
+      <text>2. 岛屿计数加一，并以该点入队</text>
+      <text>3. 出队一个点并标记访问</text>
+      <text>4. 将四邻陆地入队</text>
+      <text>5. 队列为空时结束本次遍历</text>
+    </view>
+  </view>
+  <view class="section">
+    <view class="title">DFS (深度优先搜索)</view>
+    <view class="text">深度优先搜索沿路径尽可能深入，无法继续时回溯。在岛屿问题中会从一个陆地开始，递归访问所有连通陆地。</view>
+  </view>
+  <view class="section">
+    <view class="subtitle">算法对比</view>
+    <view class="list">
+      <text>数据结构：BFS 使用队列，DFS 使用栈/递归</text>
+      <text>遍历顺序：BFS 逐层，DFS 深度</text>
+      <text>时间复杂度：均为 O(m×n)</text>
+      <text>空间复杂度：BFS 较高，DFS 取决于递归深度</text>
+    </view>
+  </view>
+</view>

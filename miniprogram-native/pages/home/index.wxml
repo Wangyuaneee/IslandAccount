@@ -1,0 +1,67 @@
+<view class="container">
+  <view class="nav">
+    <navigator url="/pages/algorithms/index" class="nav-link">算法详情</navigator>
+  </view>
+  <view class="section">
+    <view class="title">岛屿数量算法可视化</view>
+    <view class="subtitle">通过交互式网格编辑和实时可视化，深入理解BFS和DFS算法如何计算岛屿数量</view>
+  </view>
+  <view class="panel">
+    <view class="panel-title">算法控制面板</view>
+    <view class="row">
+      <button class="btn" bindtap="setBfs" disabled="{{algorithmState==='running'}}">BFS</button>
+      <button class="btn" bindtap="setDfs" disabled="{{algorithmState==='running'}}">DFS</button>
+    </view>
+    <view class="row">
+      <button class="btn" bindtap="setSlow" disabled="{{algorithmState==='running'}}">慢速</button>
+      <button class="btn" bindtap="setMedium" disabled="{{algorithmState==='running'}}">中速</button>
+      <button class="btn" bindtap="setFast" disabled="{{algorithmState==='running'}}">快速</button>
+    </view>
+    <view class="row">
+      <button class="btn primary" bindtap="start" disabled="{{algorithmState==='running'||algorithmState==='completed'}}">开始算法</button>
+      <button class="btn warn" bindtap="pause" disabled="{{algorithmState!=='running'}}">暂停</button>
+      <button class="btn" bindtap="reset" disabled="{{algorithmState==='running'}}">重置</button>
+    </view>
+  </view>
+  <view class="panel">
+    <view class="panel-title">网格编辑区</view>
+    <view class="row between">
+      <view>当前岛屿数量：{{islandCount}}</view>
+      <button class="btn danger" bindtap="clearGrid" disabled="{{algorithmState==='running'}}">清空网格</button>
+    </view>
+    <view class="sizes">
+      <button class="btn" data-r="5" data-c="5" bindtap="setSize">5×5</button>
+      <button class="btn" data-r="8" data-c="8" bindtap="setSize">8×8</button>
+      <button class="btn" data-r="10" data-c="10" bindtap="setSize">10×10</button>
+      <button class="btn" data-r="12" data-c="12" bindtap="setSize">12×12</button>
+      <button class="btn" data-r="15" data-c="15" bindtap="setSize">15×15</button>
+    </view>
+    <view class="grid" style="grid-template-columns: repeat({{gridDimensions.cols}}, 1fr); grid-template-rows: repeat({{gridDimensions.rows}}, 1fr);">
+      <block wx:for="{{grid}}" wx:key="index">
+        <block wx:for="{{item}}" wx:key="index">
+          <view class="cell {{getCellClass(index,wx:forindex)}}" bindtap="onCellTap" data-r="{{wx:forindex}}" data-c="{{index}}">
+            <text class="cell-text">{{getCellText(wx:forindex,index)}}</text>
+          </view>
+        </block>
+      </block>
+    </view>
+    <view class="legend">
+      <view class="legend-item"><view class="legend-sample ocean"></view><text>海洋(0)</text></view>
+      <view class="legend-item"><view class="legend-sample land"></view><text>陆地(1)</text></view>
+      <view class="legend-item"><view class="legend-sample visited"></view><text>已访问</text></view>
+      <view class="legend-item"><view class="legend-sample current"></view><text>当前访问</text></view>
+    </view>
+  </view>
+  <view class="panel">
+    <view class="panel-title">实时状态</view>
+    <view class="row"><text>状态：{{stateText}}</text></view>
+    <view class="row"><text>进度：{{Math.round(executionProgress)}}%</text></view>
+    <block wx:if="{{currentStep}}">
+      <view class="step">
+        <text>步骤 {{currentStep.stepNumber}}</text>
+        <text>{{currentStep.description}}</text>
+        <text>位置 ({{currentStep.currentPosition.row}}, {{currentStep.currentPosition.col}})</text>
+      </view>
+    </block>
+  </view>
+</view>
