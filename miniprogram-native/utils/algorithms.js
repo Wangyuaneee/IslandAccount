@@ -49,7 +49,7 @@ function runBfs(grid, delay, onStep, shouldPause) {
         if (q.length === 0) { schedule(findNextStart); return }
         var rc = q.shift(); var r = rc[0]; var c = rc[1]
         steps++
-        onStep({ stepNumber: steps, description: 'BFS', currentPosition: { row: r, col: c } }, clone(visited), islands)
+        onStep({ stepNumber: steps, description: 'BFS', currentPosition: { row: r, col: c } }, clone(visited), islands, q.length)
         var ns = neighbors(r, c)
         for (var k = 0; k < ns.length; k++) {
           var nr = ns[k][0], nc = ns[k][1]
@@ -105,7 +105,7 @@ function runDfs(grid, delay, onStep, shouldPause) {
         if (stack.length === 0) { schedule(findNextStart); return }
         var rc = stack.pop(); var r = rc[0]; var c = rc[1]
         steps++
-        onStep({ stepNumber: steps, description: 'DFS', currentPosition: { row: r, col: c } }, clone(visited), islands)
+        onStep({ stepNumber: steps, description: 'DFS', currentPosition: { row: r, col: c } }, clone(visited), islands, stack.length)
         var ns = neighbors(r, c)
         for (var k = 0; k < ns.length; k++) {
           var nr = ns[k][0], nc = ns[k][1]

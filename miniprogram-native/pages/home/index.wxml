@@ -16,13 +16,13 @@
   <view class="panel">
     <view class="panel-title">算法控制面板</view>
     <view class="row">
-      <button class="btn" bindtap="setBfs" disabled="{{algorithmState==='running'}}">BFS</button>
-      <button class="btn" bindtap="setDfs" disabled="{{algorithmState==='running'}}">DFS</button>
+      <button class="btn {{algorithmType==='bfs'?'primary':''}}" bindtap="setBfs" disabled="{{algorithmState==='running'}}">BFS</button>
+      <button class="btn {{algorithmType==='dfs'?'primary':''}}" bindtap="setDfs" disabled="{{algorithmState==='running'}}">DFS</button>
     </view>
     <view class="row">
-      <button class="btn" bindtap="setSlow" disabled="{{algorithmState==='running'}}">慢速</button>
-      <button class="btn" bindtap="setMedium" disabled="{{algorithmState==='running'}}">中速</button>
-      <button class="btn" bindtap="setFast" disabled="{{algorithmState==='running'}}">快速</button>
+      <button class="btn {{speed==='slow'?'selected':''}}" bindtap="setSlow" disabled="{{algorithmState==='running'}}">慢速</button>
+      <button class="btn {{speed==='medium'?'selected':''}}" bindtap="setMedium" disabled="{{algorithmState==='running'}}">中速</button>
+      <button class="btn {{speed==='fast'?'selected':''}}" bindtap="setFast" disabled="{{algorithmState==='running'}}">快速</button>
     </view>
     <view class="row">
       <button class="btn primary" bindtap="start" disabled="{{algorithmState==='running'||algorithmState==='completed'}}">开始算法</button>
@@ -37,11 +37,11 @@
       <button class="btn danger" bindtap="clearGrid" disabled="{{algorithmState==='running'}}">清空网格</button>
     </view>
     <view class="sizes">
-      <button class="btn" data-r="5" data-c="5" bindtap="setSize">5×5</button>
-      <button class="btn" data-r="8" data-c="8" bindtap="setSize">8×8</button>
-      <button class="btn" data-r="10" data-c="10" bindtap="setSize">10×10</button>
-      <button class="btn" data-r="12" data-c="12" bindtap="setSize">12×12</button>
-      <button class="btn" data-r="15" data-c="15" bindtap="setSize">15×15</button>
+      <button class="btn {{gridDimensions.rows===5?'primary':''}}" data-r="5" data-c="5" bindtap="setSize">5×5</button>
+      <button class="btn {{gridDimensions.rows===8?'primary':''}}" data-r="8" data-c="8" bindtap="setSize">8×8</button>
+      <button class="btn {{gridDimensions.rows===10?'primary':''}}" data-r="10" data-c="10" bindtap="setSize">10×10</button>
+      <button class="btn {{gridDimensions.rows===12?'primary':''}}" data-r="12" data-c="12" bindtap="setSize">12×12</button>
+      <button class="btn {{gridDimensions.rows===15?'primary':''}}" data-r="15" data-c="15" bindtap="setSize">15×15</button>
     </view>
     <view class="grid" style="grid-template-columns: repeat({{gridDimensions.cols}}, 32px); grid-template-rows: repeat({{gridDimensions.rows}}, 32px);">
       <block wx:for="{{renderGrid}}" wx:for-item="row" wx:for-index="rIdx" wx:key="r">
@@ -63,6 +63,14 @@
     <view class="panel-title">实时状态</view>
     <view class="row"><text>状态：{{stateText}}</text></view>
     <view class="row"><text>进度：{{progressText}}</text></view>
+    <view class="metrics">
+      <view class="metric"><text class="label">算法</text><text class="value">{{algorithmType==='bfs'?'BFS':'DFS'}}</text></view>
+      <view class="metric"><text class="label">速度</text><text class="value">{{speed==='slow'?'慢速':(speed==='medium'?'中速':'快速')}}</text></view>
+      <view class="metric"><text class="label">网格</text><text class="value">{{gridDimensions.rows}}×{{gridDimensions.cols}}</text></view>
+      <view class="metric"><text class="label">已访问</text><text class="value">{{visitedCount}}</text></view>
+      <view class="metric"><text class="label">步骤数</text><text class="value">{{steps}}</text></view>
+      <view class="metric"><text class="label">耗时</text><text class="value">{{(totalTime/1000).toFixed(2)}}s</text></view>
+    </view>
     <view class="progress">
       <view class="progress-bar" style="width: {{progressWidth}}"></view>
     </view>
