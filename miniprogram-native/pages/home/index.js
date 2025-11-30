@@ -13,7 +13,8 @@ Page({
     currentStep:null,
     renderGrid:[],
     stateText:'待机中',
-    progressText:'0%'
+    progressText:'0%',
+    progressWidth:'0%'
   },
   onLoad(){this.setData({visited:this.createVisited(this.data.gridDimensions.rows,this.data.gridDimensions.cols)});this.updateComputed()},
   createVisited(r,c){const v=[];for(let i=0;i<r;i++){const row=[];for(let j=0;j<c;j++){row.push(false)}v.push(row)}return v},
@@ -35,7 +36,8 @@ Page({
     }
     const stateText = algorithmState==='idle'?'待机中':algorithmState==='running'?'运行中':algorithmState==='paused'?'已暂停':'已完成'
     const progressText = `${Math.round(executionProgress)}%`
-    this.setData({ renderGrid: render, stateText, progressText })
+    const progressWidth = progressText
+    this.setData({ renderGrid: render, stateText, progressText, progressWidth })
   },
   setBfs(){this.setData({algorithmType:'bfs'})},
   setDfs(){this.setData({algorithmType:'dfs'})},

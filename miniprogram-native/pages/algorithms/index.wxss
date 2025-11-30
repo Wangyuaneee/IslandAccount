@@ -1,4 +1,4 @@
-.container{padding:12px}
+.container{max-width:960px;margin:0 auto;padding:16px}
 .back{color:#2563eb;margin-bottom:12px}
 .section{background:#fff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:12px;padding:12px}
 .title{font-size:18px;font-weight:700;color:#111827;margin-bottom:8px}

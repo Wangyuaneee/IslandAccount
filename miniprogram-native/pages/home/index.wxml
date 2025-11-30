@@ -1,7 +1,14 @@
-<view class="container">
-  <view class="nav">
-    <navigator url="/pages/algorithms/index" class="nav-link">算法详情</navigator>
+<view class="header">
+  <view class="header-inner">
+    <view class="logo"><text class="logo-text">岛屿</text></view>
+    <text class="header-title">岛屿计数器</text>
+    <view class="header-nav">
+      <navigator url="/pages/algorithms/index" class="nav-link">算法详情</navigator>
+    </view>
   </view>
+</view>
+
+<view class="container">
   <view class="section">
     <view class="title">岛屿数量算法可视化</view>
     <view class="subtitle">通过交互式网格编辑和实时可视化，深入理解BFS和DFS算法如何计算岛屿数量</view>
@@ -36,7 +43,7 @@
       <button class="btn" data-r="12" data-c="12" bindtap="setSize">12×12</button>
       <button class="btn" data-r="15" data-c="15" bindtap="setSize">15×15</button>
     </view>
-    <view class="grid" style="grid-template-columns: repeat({{gridDimensions.cols}}, 1fr); grid-template-rows: repeat({{gridDimensions.rows}}, 1fr);">
+    <view class="grid" style="grid-template-columns: repeat({{gridDimensions.cols}}, 32px); grid-template-rows: repeat({{gridDimensions.rows}}, 32px);">
       <block wx:for="{{renderGrid}}" wx:for-item="row" wx:for-index="rIdx" wx:key="r">
         <block wx:for="{{row}}" wx:for-item="cell" wx:for-index="cIdx" wx:key="c">
           <view class="cell {{cell.cls}}" bindtap="onCellTap" data-r="{{rIdx}}" data-c="{{cIdx}}">
@@ -56,6 +63,9 @@
     <view class="panel-title">实时状态</view>
     <view class="row"><text>状态：{{stateText}}</text></view>
     <view class="row"><text>进度：{{progressText}}</text></view>
+    <view class="progress">
+      <view class="progress-bar" style="width: {{progressWidth}}"></view>
+    </view>
     <block wx:if="{{currentStep}}">
       <view class="step">
         <text>步骤 {{currentStep.stepNumber}}</text>
